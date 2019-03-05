@@ -44,13 +44,10 @@ void insert(struct TrieNode *root, const char *key) {
     int index;
 
     struct TrieNode *check = root;
-    printf("test\n");
+
     for (level = 0; level < length; level++) {
         index = CHAR_TO_INDEX(key[level]);
-        printf("%c == %d\n",key[level],index);
-        if(index < 0 || index > 26){
-          break;
-        }
+
       if (!check->children[index]){ //If statement causing segfault
             check->children[index] = getNode();
         }
@@ -67,7 +64,6 @@ bool search(struct TrieNode *root, const char *key) {
     int length = strlen(key);
     int index;
     struct TrieNode *check = root;
-
     for (level = 0; level < length; level++) {
         index = CHAR_TO_INDEX(key[level]);
 
@@ -88,7 +84,7 @@ char* clear(char* array){
 }
 
 // Driver
-int wordList(void) {
+void wordList(void) {
     struct TrieNode *root = getNode();
     // Construct trie
     FILE *fp;
@@ -101,29 +97,24 @@ int wordList(void) {
       printf("Could not open file wordList.txt\n");
       return 1;
     }
-
-    clear(temp);
-    clear(str);
+    printf("test\n");
     //Segfault in while loop
     while(fgets(temp,47,fp) != NULL){
       int j = 0;
-      printf("test\n");
-      while(temp[j+1] != '\0'){
+      while(temp[j+1] != '\n'){
         str[j] = temp[j];
-        printf("%c == %c\n",str[j],temp[j]);
         j++;
       }
       clear(temp);
-      printf("test\n");
       insert(root,str);
       clear(str);
     }
 
      char output[][32] = {"Not present in trie", "Present in trie"};
     // Search for different keys
+    printf("%s --- %s\n", "AXSADADS", output[search(root, "AXSADADS")] );
     printf("%s --- %s\n", "AA", output[search(root, "AA")] );
-    printf("%s --- %s\n", "AAH", output[search(root, "AAH")] );
-    printf("%s --- %s\n", "AAHS", output[search(root, "AAHS")] );
+    printf("%s --- %s\n", "AAS", output[search(root, "AAHS")] );
     printf("%s --- %s\n", "UNKET", output[search(root, "UNKET")] );
 
     return 0;

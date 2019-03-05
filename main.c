@@ -6,11 +6,11 @@
 
 
 int main(void){
+  wordList();
+  printf("\n");
   genBoard();
   printf("\n");
   wordFind();
-  printf("\n");
-  wordList();
   printf("\n");
   return 0;
 }
