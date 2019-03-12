@@ -30,6 +30,6 @@ bool search(struct TrieNode *root, const char *key);
 char* clear(char* array);
 
 // Driver
-void wordList(void);
+struct TrieNode wordList(void);
 
 #endif

@@ -7,7 +7,9 @@ extern struct boardNode{
   bool isChecked;
 } boardNode;
 
-struct boardNode **Board;
+extern struct boardNode **Board;
+extern int height;
+extern int width;
 
 char getRandomChar(void);
 

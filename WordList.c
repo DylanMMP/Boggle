@@ -90,7 +90,7 @@ char* clear(char* array){
 
 // Driver
 int wordList(void) {
-  struct TrieNode *root = getNode();
+  root = getNode();
   // Construct trie
   FILE *file;
   char str[46]; //The longest word in the English language is 45 letters long

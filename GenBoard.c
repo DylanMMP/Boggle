@@ -10,6 +10,12 @@ struct boardNode{
   bool isChecked;
 };
 
+
+struct boardNode **Board;
+
+int width;
+int height;
+
 char getRandomChar(void){
   /*There are 96 faces to the dice in boggle
    *To maintain the same liklihood for each letter as in the original game
@@ -62,9 +68,6 @@ struct boardNode *getBoardNode(void){
 
 void genBoard(void){
 
-  int width = 0;  //The width of the board
-  int height = 0; //the height of the board
-
   //A print and scan to prompt and retrieve width from user.
   printf("Please input desired width:\n");
   scanf("%d",&width);
@@ -79,7 +82,10 @@ void genBoard(void){
     Board[i] = malloc(sizeof(struct boardNode) * width);
   }*/
 
-  struct boardNode (*Board)[width] = malloc(sizeof(struct boardNode) * width * height);
+  Board = malloc(sizeof(struct boardNode) * height);
+  for(int i = 0; i < height; i++) {
+    Board[i] = malloc(sizeof(struct boardNode) * width);
+  }
 
   //Preparing random number generation.
   time_t t;
