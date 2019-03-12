@@ -1,3 +1,5 @@
-WordList.c is segfaulting inside of the insert function, but compiles and runs perfectly when it is its own main file.
-GenBoard.c creates an array instead of a graph.
-WordFind.c doesn't do anything.
+Create WordFind.c
+Add game mechanics (Scoring, player interaction, etc)
+Create the makefile
+Create the video tutorials
+Optional: ncurses
