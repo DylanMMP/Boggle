@@ -3,18 +3,16 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "GenBoard.h"
 //Definition to get size of an array
 #define LEN(arr) ((int)(sizeof(arr) / sizeof(arr)[0]));
 
-/*int* checkAdjacent(char* board[], int* checked[], int posX, int posY){
 
-}*/
+void wordFind(){
+  //char board[4][4] = {{'A','A','H','U'},{'O','P','P','L'},{'E','J','E','F'},{'T','X','L','L'}};
 
-void wordFind(void){
-  char board[4][4] = {{'A','A','H','U'},{'O','P','P','L'},{'E','J','E','F'},{'T','X','L','L'}};
-
-  int width = LEN(board);
-  int height = LEN(board[0]);
+  int width = LEN(Board);
+  int height = LEN(Board[0]);
 
 /*
   for(int j = 0; j < height; j++){
