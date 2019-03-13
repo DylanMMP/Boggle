@@ -77,28 +77,29 @@ void genBoard(void){
   scanf("%d",&height);
 
   //struct boardNode *Board[width][height]; //Creating array to store board
-/*  struct boardNode **Board = malloc(height * sizeof(struct boardNode *));
+  Board = malloc(sizeof(struct boardNode *) * height);
   for(int i = 0; i < height; i++){
     Board[i] = malloc(sizeof(struct boardNode) * width);
-  }*/
-
-  Board = malloc(sizeof(struct boardNode) * height);
-  for(int i = 0; i < height; i++) {
-    Board[i] = malloc(sizeof(struct boardNode) * width);
   }
+  printf("premalloc\n");
+  //Board = malloc(sizeof(struct boardNode) * height * width);
 
   //Preparing random number generation.
   time_t t;
   srand((unsigned) time(&t));
-
+  printf("preassign\n");
+  int z = 0;
   //Loop to fill board with psuedo-random letters
   for(int j = 0;j < height; j++){
+    printf("test height %d\n",j);
     for(int k = 0; k < width; k++){
+      printf("test %d | %d\n",k,z);
+      z++;
       Board[j][k].boardChar = getRandomChar(); //Placing a randomly selected letter into a spot in the board
       Board[j][k].isChecked = false;
     }
   }
-
+  printf("preprint\n");
   //Outputting board for testing purposes
   for(int j = 0; j < height; j++){
     for(int k = 0; k < width; k++){
