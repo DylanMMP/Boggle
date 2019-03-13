@@ -1,21 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-//#include "GenBoard.c"
 #include "WordFind.c"
 #include "WordList.h"
 #include "GenBoard.h"
 
 int main(void){
-  extern struct boardNode **Board;
-  extern struct TrieNode *root;
-  extern int height;
-  extern int width;
+
   wordList();
+  printf("wordlist complete\n");
   printf("\n");
   genBoard();
+  printf("genboard complete\n");
   printf("\n");
   wordFind();
+  printf("wordfind complete\n");
   printf("\n");
 
   printf("In main:\n");
@@ -27,6 +26,7 @@ int main(void){
   printf("%s --- %s\n", "blast", output[search(root, "blast")] );
   printf("%s --- %s\n", "blasted", output[search(root, "blasted")] );
   printf("%s --- %s\n", "zoos", output[search(root, "zoos")] );
+  printf("%s --- %s\n", "bard's", output[search(root, "bard's")] );
 
   for(int j = 0; j < height; j++){
     for(int k = 0; k < width; k++){

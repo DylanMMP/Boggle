@@ -13,9 +13,6 @@ extern int width;
 
 char getRandomChar(void);
 
-
-struct boardNode *getBoardNode(void);
-
 struct boardNode **genBoard(void);
 
 #endif

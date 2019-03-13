@@ -5,16 +5,16 @@
 #include <stdbool.h>
 #include <ctype.h>
 
-struct boardNode{
+struct boardNode{                     //Struct for board node
   char boardChar;
   bool isChecked;
 };
 
 
-struct boardNode **Board;
+struct boardNode **Board;             //Global variable to hold board
 
-int width;
-int height;
+int width;                            //width of board
+int height;                           //height of board
 
 char getRandomChar(void){
   /*There are 96 faces to the dice in boggle
@@ -50,20 +50,8 @@ char getRandomChar(void){
   char randChar;
   int randNum = 0; //randNum will store a random number to replicate dice roll
   randNum = rand() % 96; //Generating random number
-  randChar = dice[randNum];
+  randChar = dice[randNum];   //Using dice array to assign a character psuedorandomly
   return randChar;
-}
-
-
-struct boardNode *getBoardNode(void){
-  struct boardNode *node = NULL;                              //Creating node
-
-  if (node) {
-    //By default,is not checked.
-    node->isChecked = false;
-    node->boardChar = getRandomChar();
-  }
-  return node;
 }
 
 void genBoard(void){
@@ -76,30 +64,23 @@ void genBoard(void){
   printf("Please input desired height:\n");
   scanf("%d",&height);
 
-  //struct boardNode *Board[width][height]; //Creating array to store board
+  //Dynamically allocating array
   Board = malloc(sizeof(struct boardNode *) * height);
   for(int i = 0; i < height; i++){
     Board[i] = malloc(sizeof(struct boardNode) * width);
   }
-  printf("premalloc\n");
-  //Board = malloc(sizeof(struct boardNode) * height * width);
 
   //Preparing random number generation.
   time_t t;
   srand((unsigned) time(&t));
-  printf("preassign\n");
-  int z = 0;
+
   //Loop to fill board with psuedo-random letters
   for(int j = 0;j < height; j++){
-    printf("test height %d\n",j);
     for(int k = 0; k < width; k++){
-      printf("test %d | %d\n",k,z);
-      z++;
       Board[j][k].boardChar = getRandomChar(); //Placing a randomly selected letter into a spot in the board
-      Board[j][k].isChecked = false;
+      Board[j][k].isChecked = false;           //Unnessecary but ensuring node is not checked
     }
   }
-  printf("preprint\n");
   //Outputting board for testing purposes
   for(int j = 0; j < height; j++){
     for(int k = 0; k < width; k++){
