@@ -13,11 +13,13 @@ struct TrieNode {
 
 extern struct TrieNode *root;
 
-struct TrieNode *getTrieNode(void);
+struct TrieNode *newTrieNode(void);
 
 void insert(struct TrieNode *root, const char *key);
 
 bool search(struct TrieNode *root, const char *key);
+
+bool lettersInTree(struct TrieNode *root, const char *key);
 
 char* clear(char* array);
 

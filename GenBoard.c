@@ -81,6 +81,7 @@ void genBoard(void){
       Board[j][k].isChecked = false;           //Unnessecary but ensuring node is not checked
     }
   }
+
   //Outputting board for testing purposes
   for(int j = 0; j < height; j++){
     for(int k = 0; k < width; k++){

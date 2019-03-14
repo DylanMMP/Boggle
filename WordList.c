@@ -25,7 +25,7 @@ struct TrieNode {
 struct TrieNode *root; //Global variable for root
 
 // Creates new trie node, by default is empty
-struct TrieNode *newNode(void) {
+struct TrieNode *newTrieNode(void) {
   struct TrieNode *node = NULL;                               //Creating node
   node = (struct TrieNode *)malloc(sizeof(struct TrieNode)); //Dynamically allocating node
 
@@ -67,7 +67,7 @@ void insert(struct TrieNode *root, const char *word) {
   for(depth = 0; depth < wordLength; depth++) { //A word must occupy a space in the trie = its length because all characters require a node
     index = ASSIGN_CHAR_INDEX(word[depth]); //Find index to assign letter to
     if(!check->child[index]){ //If the next letter does not exist in the trie as a child of the node
-      check->child[index] = newNode(); //Add the letter as a child
+      check->child[index] = newTrieNode(); //Add the letter as a child
     }
     check = check->child[index]; //If the child didn't exist before, it does now. Move to it.
   } //For loop iterates until at the end of the word.
@@ -96,6 +96,26 @@ bool search(struct TrieNode *root, const char *word) {
   return (check != NULL && check->isEndOfWord);
 }
 
+bool lettersInTree(struct TrieNode *root, const char *word) {
+  int depth;                     //depth is used to represent the current level inside the tree
+  int wordLength = strlen(word); //wordLength gets size of word currently being checked
+  int index;                     //Index is used to see where in the trie a letter goes (Ie: a has an index of 0 so it is child[0])
+  struct TrieNode *check = root; //Begin search at root
+  for(depth = 0; depth < wordLength; depth++) { //The deepest we can go searching for a word is its length
+    index = ASSIGN_CHAR_INDEX(word[depth]);      //Get index of next character to check for.
+    if(index < 0 || index > ALPHABET){ //Nonalpha, nonlowercase character CANNOT exist in trie so it is automatically false
+      return false;
+    }
+    if(!check->child[index]){ //If the next letter doesn't exist in trie, the word doesn't exist in trie
+      return false;
+    }
+    check = check->child[index]; //iterate to next letter
+  }
+  //If we haven't gone to an invalid location AND the current node is stored as the end of a word
+  //then the following line should return true
+  return (check != NULL);
+}
+
 //This is a simple function to reset an array to NULL
 char* clear(char* array){
   for(int k = 0; k < MAX_WORD_SIZE;k++){ //
@@ -107,7 +127,7 @@ char* clear(char* array){
 // Function to carry out initialization of trie using text file
 int wordList(void) {
   //root requires no values to initialize, since it wont be end of word nor contain any values by default
-  root = newNode();
+  root = newTrieNode();
 
   //str and temp are both strings to store and initialize words.
   //longest word in the english language is 45 characters (pneumonoultramicroscopicsilicovolcanoconiosis)
@@ -136,14 +156,5 @@ int wordList(void) {
     insert(root,str); //we add the string to the root
     clear(str); //we empty str
   }
-  //The remainder until the return is for testing purposes
-  char output[][32] = {"Not present in trie", "Present in trie"};
-  // Search for different words
-  printf("%s --- %s\n", "axsadad", output[search(root, "axsadad")] );
-  printf("%s --- %s\n", "Aaron", output[search(root, "Aaron")] );
-  printf("%s --- %s\n", "blast", output[search(root, "blast")] );
-  printf("%s --- %s\n", "blasted", output[search(root, "blasted")] );
-  printf("%s --- %s\n", "zoos", output[search(root, "zoos")] );
-
   return 0;
 }
