@@ -18,7 +18,7 @@ int main(void){
     wordFind();
     score = playerAcc();
     printf("You scored %d points!\n",score);
-    printf("Would you like to see the possible words?");
+    printf("Would you like to see the possible words?\n");
     scanf("%s",choice);
     for(int i = 0;i < 3;i++){
       choice[i] = tolower(choice[i]);
@@ -29,7 +29,7 @@ int main(void){
         check = check->next;
       }
     }
-    printf("Would you like to play again? ");
+    printf("Would you like to play again?\n");
     scanf("%s",choice);
     for(int i = 0;i < 3;i++){
       choice[i] = tolower(choice[i]);
