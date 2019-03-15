@@ -1,4 +1,3 @@
-fix infinite point bug (re-enter same word over and over)
 fix bug where some words are either not stored as found or overwritten.
 Create the makefile
 Create tutorial to run
