@@ -1,5 +1,6 @@
-Store found words
-Add game mechanics (Scoring, player interaction, etc)
+fix infinite point bug (re-enter same word over and over)
+fix bug where some words are either not stored as found or overwritten.
 Create the makefile
+Create tutorial to run
 Create the video tutorials
 Optional: ncurses
