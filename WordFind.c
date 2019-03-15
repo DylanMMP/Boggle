@@ -1,3 +1,6 @@
+/* TODO: fix bug where words that are detected before other words with the same base word are overwritten
+ * The above might not be the issue, but some words aren't being stored.
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
@@ -92,6 +95,7 @@ void scanBoard(int i,int j,int count, char *word){    //Algorithm to recursively
   if(isSafe(i+1,j-1)){
     scanBoard(i+1,j-1,count+1,word);
   }
+  word[strlen(word)-1] = '\0';
   Board[i][j].isChecked = false;
 }
 
@@ -118,10 +122,8 @@ void wordFind(){
   struct foundWord *check = foundRoot;
   numStored = 0;
   while(check != NULL){
-    printf("%s\n",check->storedWord);
     check = check->next;
     numStored++;
   }
-  printf("Found %d words\n",numFound);
-  printf("Stored %d word\n",numStored);
+  printf("Found %d unique words\n",numStored);
 }
