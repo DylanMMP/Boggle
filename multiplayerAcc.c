@@ -1,16 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 #include "WordFind.h"
 
-struct scoredWord{
+#define PLAYER_ONE (0)
+#define PLAYER_TWO (1)
+
+struct scoredWordMP{
   char word[MAX_WORD_SIZE];
-  struct scoredWord *next;
+  struct scoredWordMP *next;
 };
 
-struct scoredWord *scoredWordNode(void) {
-  struct scoredWord *node = NULL;                               //Creating node
-  node = (struct scoredWord *)malloc(sizeof(struct scoredWord)); //Dynamically allocating node
+struct scoredWordMP *scoredWordMPNode(void) {
+  struct scoredWordMP *node = NULL;                               //Creating node
+  node = (struct scoredWordMP *)malloc(sizeof(struct scoredWordMP)); //Dynamically allocating node
 
   if(node) {
     strcpy(node->word,"\0");
@@ -19,11 +23,11 @@ struct scoredWord *scoredWordNode(void) {
   return node;
 }
 
-struct scoredWord *scoredRoot;
+struct scoredWordMP *scoredMPRoot;
 
-void newScoredWord(char *word){
-  struct scoredWord *newNode = scoredWordNode();
-  struct scoredWord *check = scoredRoot;
+void newscoredWordMP(char *word){
+  struct scoredWordMP *newNode = scoredWordMPNode();
+  struct scoredWordMP *check = scoredMPRoot;
   strcpy(newNode->word,word);
   if(check->next == NULL){
     check->next = newNode;
@@ -45,8 +49,8 @@ void newScoredWord(char *word){
   }
 }
 
-int scoreWord(char *word){
-  struct scoredWord *check = scoredRoot;
+int scoreWordMP(char *word){
+  struct scoredWordMP *check = scoredMPRoot;
   while(check != NULL){
     if(strcmp(check->word,word) == 0){
       printf("You have already entered %s!\n",word);
@@ -55,47 +59,53 @@ int scoreWord(char *word){
     check = check->next;
   }
   if(strlen(word) == 3){
-    newScoredWord(word);
+    newscoredWordMP(word);
     return 1;
   }else if(strlen(word) == 4){
-    newScoredWord(word);
+    newscoredWordMP(word);
     return 1;
   }else if(strlen(word) == 5){
-    newScoredWord(word);
+    newscoredWordMP(word);
     return 2;
   }else if(strlen(word) == 6){
-    newScoredWord(word);
+    newscoredWordMP(word);
     return 3;
   }else if(strlen(word) == 7){
-    newScoredWord(word);
+    newscoredWordMP(word);
     return 4;
   }else if(strlen(word) >= 8){
-    newScoredWord(word);
+    newscoredWordMP(word);
     return 11;
   } else {
-    newScoredWord(word);
+    newscoredWordMP(word);
     return 0;
   }
 }
 
-int playerAcc(void){
+int multiplayerAcc(void){
+  bool turn = PLAYER_ONE;
+  int winner = 0;
   struct foundWord *check;
-  scoredRoot = scoredWordNode();
+  scoredMPRoot = scoredWordMPNode();
   char input[MAX_WORD_SIZE];
-  int pointTotal = 0;
+  int pointTotalP1 = 0;
+  int pointTotalP2 = 0;
   int pointValue = 0;
   printf("Input words (or 'q' to quit)\n");
   while(1){
     check = foundRoot;
-    printf("Guess: ");
+    if(turn == PLAYER_ONE){
+      printf("Player 1 Guess: ");
+    } else {
+      printf("Player 2 Guess: ");
+    }
     scanf("%s",input);
     if(strcmp(input,"q") == 0){
       break;
     }
     while(1){
       if(strcmp(input,check->storedWord) == 0){
-        pointValue = scoreWord(input);
-        pointTotal += pointValue;
+        pointValue = scoreWordMP(input);
         printf("%s found! %s is worth %d points!\n",input,input,pointValue);
         break;
       } else if(strcmp(input,check->storedWord) != 0 && check->next == NULL) {
@@ -105,6 +115,18 @@ int playerAcc(void){
         check = check->next;
       }
     }
+    if(turn == PLAYER_ONE){
+      turn = PLAYER_TWO;
+    } else {
+      turn = PLAYER_ONE;
+    }
   }
-  return pointTotal;
+  if(pointTotalP1 > pointTotalP2){ //Player 1 wins
+    winner = 1;
+  } else if (pointTotalP1 < pointTotalP2){ //Player 2 wins
+    winner = 2;
+  } else {  //It's a tie
+    winner = 0;
+  }
+  return winner;
 }

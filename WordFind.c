@@ -1,6 +1,3 @@
-/* TODO: fix bug where words that are detected before other words with the same base word are overwritten
- * The above might not be the issue, but some words aren't being stored.
-*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
@@ -8,28 +5,26 @@
 #include "GenBoard.h"
 #include "WordList.h"
 
-//TODO: Store found words
-struct foundWord{
+struct foundWord{ //Struct used to store found words
   char storedWord[MAX_WORD_SIZE];
   struct foundWord *next;
 };
 
-struct foundWord *foundRoot;
+struct foundWord *foundRoot; //root of found words linked list
 
-int numFound;
-int numStored;
+int numStored;  //Counts number of unique words
 
-bool isSafe(int i,int j){
+bool isSafe(int i,int j){ //Verifies that index is not out of board and not previously checked.
   return((i >= 0 && i < height) && (j >= 0) && (j < width) && (Board[i][j].isChecked == false));
 }
 
-struct foundWord *newFoundWordNode(void) {
+struct foundWord *newFoundWordNode(void) {                      //Creates node for new found word
   struct foundWord *node = NULL;                               //Creating node
   node = (struct foundWord *)malloc(sizeof(struct foundWord)); //Dynamically allocating node
 
   if(node) {
-    strcpy(node->storedWord,"\0");
-    node->next = NULL;
+    strcpy(node->storedWord,"\0");    //By default, a node is empty with no stored word
+    node->next = NULL;                //By default, a node does not point towards anything
   }
   return node;
 }
@@ -64,9 +59,8 @@ void scanBoard(int i,int j,int count, char *word){    //Algorithm to recursively
   Board[i][j].isChecked = true;
   if(search(root,word)){
     newFoundWord(word);
-    numFound++;
   }
-  if(count > 0 && !lettersInTree(root,word)){
+  if((count > 0 && !lettersInTree(root,word)) || (count > 45)){
     Board[i][j].isChecked = false;
     return;
   }
@@ -110,7 +104,6 @@ void wordFind(){
   foundRoot = newFoundWordNode();
   char word[MAX_WORD_SIZE];        //Word will store the checked letters
   emptyWord(word);
-  numFound = 0;
 
   for(int i = 0; i < height; i++){
     for(int j = 0; j < width; j++){

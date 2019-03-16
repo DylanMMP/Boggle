@@ -6,7 +6,7 @@ struct foundWord{
   struct foundWord *next;
 };
 
-struct foundWord *foundRoot;
+extern struct foundWord *foundRoot;
 
 int NumberOfWords;
 

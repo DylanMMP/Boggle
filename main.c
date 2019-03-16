@@ -1,54 +1,24 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
 #include <ctype.h>
-#include "WordList.h"
-#include "WordFind.h"
-#include "GenBoard.h"
-#include "playerAcc.c"
+#include "SinglePlayer.c"
+#include "Multiplayer.c"
 
 int main(void){
-  int score = 0;
-  int highscore = 0;
-  char choice[3];
-  //struct foundWord *check = NULL;
-  wordList();
+  char choice[10];
+    printf("Would you like to play single player or multiplayer?\n");
   while(1){
-    //check = foundRoot;
-    genBoard();
-    wordFind();
-    score = playerAcc();
-    printf("\n");
-    printf("\n");
-    printf("You scored a total of %d points!\n",score);
-    printf("\n");
-    if(score > highscore){
-      printf("You beat the highscore of %d points!\n",highscore);
-      printf("You have the new highscore!");
-      highscore = score;
-    }
-    printf("\n");/*This portion of code doesn't print anything
-    printf("Would you like to see the possible words?\n");
     scanf("%s",choice);
-    for(int i = 0;i < 3;i++){
-      choice[i] = tolower(choice[i]);
-    }
-    if(strcmp(choice,"yes") == 0 || strcmp(choice,"y") == 0){
-      while(check != NULL){
-        printf("%s\n",check->storedWord);
-        check = check->next;
-      }
-    }*/
-    printf("\n");
-    printf("Would you like to play again?\n");
-    scanf("%s",choice);
-    for(int i = 0;i < 3;i++){
-      choice[i] = tolower(choice[i]);
-    }
-    printf("\n");
-    if(strcmp(choice,"no") == 0 || strcmp(choice,"n") == 0){
+    if(strcmp(choice,"single") == 0 || strcmp(choice,"singleplayer") == 0){
+      singlePlayer();
+    } else if(strcmp(choice,"multi") == 0 || strcmp(choice,"multiplayer") == 0){
+      multiplayer();
+    } else if(strcmp(choice,"q") == 0){
       break;
+    } else {
+      printf("Please enter a valid input\n");
     }
+    printf("Enter 'q' to quit\n");
+    printf("Enter game mode: (singleplayer or multiplayer)\n");
   }
 
   return 0;
