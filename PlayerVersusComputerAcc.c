@@ -128,8 +128,12 @@ int versusComputerAcc(void){
 
     while(1){
       if(strcmp(input,check->storedWord) == 0){
-        pointValue = scoreWordCVC(input);
-        if(pointValue = -1)
+        pointValue = scoreWordVC(input);
+        if(pointValue == -1){
+          printf("%s was already found or does not exist!\n",input);
+          pointValue = 0;
+          break;
+        }
         printf("%s found! %s is worth %d points!\n",input,input,pointValue);
         break;
       } else if(strcmp(input,check->storedWord) != 0 && check->next == NULL) {

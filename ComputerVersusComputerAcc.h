@@ -14,6 +14,7 @@ struct ScoredWordCVC *ScoredWordCVCNode(void);
 struct ScoredWordCVC *ScoredCVCRoot;
 
 void newScoredWordCVC(char *word);
+
 int scoreWordCVC(char *word);
 
 int ComputerVersusComputerAcc(void);
