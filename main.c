@@ -4,16 +4,16 @@
 #include "Multiplayer.c"
 
 int main(void){
-  char choice[10];
-    printf("Would you like to play single player or multiplayer?\n");
+  char choice[10]; //Stores user choices
+  printf("Would you like to play single player or multiplayer?\n");
   while(1){
     scanf("%s",choice);
     if(strcmp(choice,"single") == 0 || strcmp(choice,"singleplayer") == 0){
-      singlePlayer();
+      singlePlayer(); //Takes player to single player menu
     } else if(strcmp(choice,"multi") == 0 || strcmp(choice,"multiplayer") == 0){
-      multiplayer();
+      multiplayer(); //Takes player to multiplayer menu
     } else if(strcmp(choice,"q") == 0){
-      break;
+      break; //Exits loop
     } else {
       printf("Please enter a valid input\n");
     }

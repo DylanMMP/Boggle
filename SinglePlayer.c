@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include <ctype.h>
+#include <string.h>
 #include "WordList.h"
 #include "WordFind.h"
 #include "GenBoard.h"
-#include "playerAcc.c"
+#include "playerAcc.h"
 
 int singlePlayer(void){
   int score = 0;

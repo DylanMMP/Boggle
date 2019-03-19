@@ -2,13 +2,13 @@
 #define WORD_FIND_H
 
 struct foundWord{
-  char storedWord[MAX_WORD_SIZE];
+  char storedWord[45];
   struct foundWord *next;
 };
 
 extern struct foundWord *foundRoot;
 
-int NumberOfWords;
+extern int numStored;
 
 bool isSafe(int i,int j);
 

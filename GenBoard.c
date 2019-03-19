@@ -56,14 +56,28 @@ char getRandomChar(void){
 
 void genBoard(void){
 
-  //A print and scan to prompt and retrieve width from user.
-  printf("Please input desired width:\n");
-  scanf("%d",&width);
+  char choice[3];
 
-  //A print and scan to prompt and retrieve width from user.
-  printf("Please input desired height:\n");
-  scanf("%d",&height);
+  while(1){
+    //A print and scan to prompt and retrieve width from user.
+    printf("Please input desired width:\n");
+    scanf("%d",&width);
 
+    //A print and scan to prompt and retrieve width from user.
+    printf("Please input desired height:\n");
+    scanf("%d",&height);
+    if(height <= 40 && width <= 40){
+      break;
+    } else {
+      printf("Warning: boards with dimensions greater than\n");
+      printf("size 40 may result in graphical errors and\n");
+      printf("potentially long loading times. Continue?\n");
+      scanf("%s",choice);
+      if(strcmp(choice,"yes") == 0 || strcmp(choice,"y") == 0){
+        break;
+      }
+    }
+  }
   //Dynamically allocating array
   Board = malloc(sizeof(struct boardNode *) * height);
   for(int i = 0; i < height; i++){

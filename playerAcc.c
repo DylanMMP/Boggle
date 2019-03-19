@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 #include "WordFind.h"
 
 struct scoredWord{
-  char word[MAX_WORD_SIZE];
+  char word[45];
   struct scoredWord *next;
 };
 
@@ -81,7 +82,7 @@ int scoreWord(char *word){
 int playerAcc(void){
   struct foundWord *check;
   scoredRoot = scoredWordNode();
-  char input[MAX_WORD_SIZE];
+  char input[45];
   int pointTotal = 0;
   int pointValue = 0;
   printf("Input words (or 'q' to quit)\n");

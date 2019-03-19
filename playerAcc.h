@@ -2,7 +2,7 @@
 #define PLAYER_ACC_H
 
 struct scoredWord{
-  char word[MAX_WORD_SIZE];
+  char word[45];
   struct scoredWord *next;
 };
 

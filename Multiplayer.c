@@ -1,21 +1,37 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 #include <ctype.h>
 #include "WordList.h"
 #include "WordFind.h"
 #include "GenBoard.h"
-#include "multiplayerAcc.c"
+#include "PlayerVersusPlayerAcc.h"
+#include "PlayerVersusComputerAcc.h"
+#include "ComputerVersusComputerAcc.h"
 
-int multiplayer(void){
-  int winner = 0;
-  int winCount[] = {0,0,0};
-  char choice[3];
-  wordList();
+void multiplayer(void){
+  int winner = 0;           //Holds winner of most recent game
+  int winCount[] = {0,0,0}; //Stores winner of all games this session.
+  char choice[3];           //Stores user input
+  wordList();               //Creates trie of words
   while(1){
-    genBoard();
-    wordFind();
-    winner = multiplayerAcc();
+    printf("pvp = player vs player\n");
+    printf("pvc = player vs computer\n");
+    printf("cvc = computer vs computer\n");
+    printf("Which mode would you like?\n");
+    scanf("%s",choice);
+    genBoard(); //Generates the board for the coming game
+    wordFind(); //Finds all possible words in the board for the coming game
+    if(strcmp(choice,"pvp") == 0 ){
+      winner = multiplayerAcc();        //The player versus player function
+    } else if(strcmp(choice,"pvc") == 0 || strcmp(choice,"cvp") == 0) {
+      winner = versusComputerAcc();     //The Player versus Computer option
+    } else if(strcmp(choice,"cvc") == 0){
+      winner = ComputerVersusComputerAcc();//The computer vs computer option
+    } else if(strcmp(choice,"q") == 0) {
+      return;
+    } else {
+      printf("Please input valid option (or q to return to main menu)");
+    }
     winCount[winner]++;
     printf("\n");
     printf("\n");
@@ -35,6 +51,4 @@ int multiplayer(void){
       break;
     }
   }
-
-  return 0;
 }
