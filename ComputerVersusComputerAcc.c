@@ -1,3 +1,5 @@
+//This class manages the computer versus computer scenario for Boggle.
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -117,11 +119,15 @@ int ComputerVersusComputerAcc(void){
     check = foundRoot;
     if(turn == PLAYER_ONE){
       printf("Computer 1 Guess: ");
+      //There is a 10% chance whenever it is the computer's turn that the computer will quit.
+      //This is because in Player vs Player, either player can quit when they have the lead.
       randomNum = rand() % 10;
       if(randomNum == 0){
         printf("Computer 1 quits!\n");
         break;
       }
+      //The computer 'guesses' by entering a random word that has been found.
+      //The computer can 'forget' that a word has been entered already, thus entering the same word twice.
       randomNum = rand() % numStored;
       for(int i = 0; i < randomNum; i++){
         check = check->next;
@@ -131,11 +137,15 @@ int ComputerVersusComputerAcc(void){
       }
     } else {  //Since turn is a boolean, if it isn't player one's turn, it HAS to be player two's
       printf("Computer 2 Guess: ");
+      //There is a 10% chance whenever it is the computer's turn that the computer will quit.
+      //This is because in Player vs Player, either player can quit when they have the lead.
       randomNum = rand() % 10;
       if(randomNum == 0){
         printf("Computer 2 quits!\n");
         break;
       }
+      //The computer 'guesses' by entering a random word that has been found.
+      //The computer can 'forget' that a word has been entered already, thus entering the same word twice.
       randomNum = rand() % numStored;
       for(int i = 0; i < randomNum; i++){
         check = check->next;
@@ -145,16 +155,19 @@ int ComputerVersusComputerAcc(void){
       }
     }
     check = foundRoot;
+    //This loop iterates through the list of found words to see if the entered word exists
     while(1){
+      //This if statement triggers if the word is found.
       if(strcmp(input,check->storedWord) == 0){
         pointValue = scoreWordCVC(input);
+        //This if statement verifies that the word has not been previously entered.
         if(pointValue == -1){
-          printf("%s was already found or does not exist!\n",input);
           pointValue = 0;
           break;
         }
         printf("%s found! %s is worth %d points!\n",input,input,pointValue);
         break;
+      //This if statement ends the loop if the word isn't found in the found words list
       } else if(strcmp(input,check->storedWord) != 0 && check->next == NULL) {
         printf("Word not found!\n");
         break;
@@ -162,6 +175,7 @@ int ComputerVersusComputerAcc(void){
         check = check->next;
       }
     }
+    //The following if and else if statements simply increment points and change the player state.
     if(turn == PLAYER_ONE){
       pointTotalP1 += pointValue;
       turn = PLAYER_TWO;
@@ -172,6 +186,7 @@ int ComputerVersusComputerAcc(void){
       turn = !turn;
     }
   }
+
   printf("\n");
   printf("Player 1 had %d points\n",pointTotalP1);
   printf("Player 2 had %d points\n",pointTotalP2);

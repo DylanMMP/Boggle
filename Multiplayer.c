@@ -9,16 +9,22 @@
 #include "ComputerVersusComputerAcc.h"
 
 void multiplayer(void){
-  int winner = 0;           //Holds winner of most recent game
-  int winCount[] = {0,0,0}; //Stores winner of all games this session.
-  char choice[3];           //Stores user input
-  wordList();               //Creates trie of words
+  int winner = 0;
+  int winCount[] = {0,0,0};
+  char choice[3];
+  wordList();               //Wordlist is used to create the trie of words
   while(1){
-    printf("pvp = player vs player\n");
-    printf("pvc = player vs computer\n");
-    printf("cvc = computer vs computer\n");
-    printf("Which mode would you like?\n");
-    scanf("%s",choice);
+    //This loop ensures that the user enters a valid input
+    while(strcmp(choice,"pvp") != 0 && strcmp(choice,"pvc") != 0 && strcmp(choice,"cvc") != 0){
+      printf("pvp = player vs player\n");
+      printf("pvc = player vs computer\n");
+      printf("cvc = computer vs computer\n");
+      printf("Which mode would you like?\n");
+      scanf("%s",choice);
+      for(int i = 0;i < 3;i++){
+        choice[i] = tolower(choice[i]);
+      }
+    }
     genBoard(); //Generates the board for the coming game
     wordFind(); //Finds all possible words in the board for the coming game
     if(strcmp(choice,"pvp") == 0 ){

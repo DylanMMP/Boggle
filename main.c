@@ -1,3 +1,6 @@
+//The intent of this program is to allow player to play Boggle in both
+//a singleplayer and multiplayer mode.
+//This function acts as a main menu and a main function.
 #include <stdio.h>
 #include <ctype.h>
 #include "SinglePlayer.c"

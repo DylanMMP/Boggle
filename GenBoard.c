@@ -1,3 +1,10 @@
+//This class manages the board generation for Boggle.
+/*In this class we create and store the board. We do this dynamically so that
+ *the wordFind class can access it. The board is a 2d array of structs. This is
+ *so that we don't have to use two 2d arrays (one for the character and the
+ *other for whether or not that slot in the array has been previously checked)
+ *in wordFind.
+*/
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
@@ -11,7 +18,7 @@ struct boardNode{                     //Struct for board node
 };
 
 
-struct boardNode **Board;             //Global variable to hold board
+struct boardNode **Board;
 
 int width;                            //width of board
 int height;                           //height of board
@@ -44,12 +51,13 @@ char getRandomChar(void){
                 'V','V',
                 'K',
                 'J',
-                'Q',
+                'Q', //Note that in Boggle there is no 'Q' face. It is instead a 'Qu' face.
+                     //Due to being stored as single characters, these two faces are seperated for this board.
                 'X',
                 'Z'};
   char randChar;
-  int randNum = 0; //randNum will store a random number to replicate dice roll
-  randNum = rand() % 96; //Generating random number
+  int randNum = 0;
+  randNum = rand() % 96;
   randChar = dice[randNum];   //Using dice array to assign a character psuedorandomly
   return randChar;
 }
@@ -66,16 +74,19 @@ void genBoard(void){
     //A print and scan to prompt and retrieve width from user.
     printf("Please input desired height:\n");
     scanf("%d",&height);
+
     if(height <= 40 && width <= 40){
       break;
-    } else {
-      printf("Warning: boards with dimensions greater than\n");
+    } else if(height > 40 || width > 40){
+      printf("Warning: Boards with dimensions greater than\n");
       printf("size 40 may result in graphical errors and\n");
       printf("potentially long loading times. Continue?\n");
       scanf("%s",choice);
       if(strcmp(choice,"yes") == 0 || strcmp(choice,"y") == 0){
         break;
       }
+    } else if(height <= 0 || width <= 0){
+      printf("Error: Boards of size 0 or less are not allowed.\n");
     }
   }
   //Dynamically allocating array
@@ -92,7 +103,7 @@ void genBoard(void){
   for(int j = 0;j < height; j++){
     for(int k = 0; k < width; k++){
       Board[j][k].boardChar = getRandomChar(); //Placing a randomly selected letter into a spot in the board
-      Board[j][k].isChecked = false;           //Unnessecary but ensuring node is not checked
+      Board[j][k].isChecked = false;           //Ensuring node is not checked
     }
   }
 

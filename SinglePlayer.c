@@ -1,3 +1,5 @@
+//The intent behind this class is to provide the singleplayer menu screen
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -20,6 +22,8 @@ int singlePlayer(void){
     printf("\n");
     printf("You scored a total of %d points!\n",score);
     printf("\n");
+    //Since there isn't a win-loss table, we have a highscoreboard
+    //Like the win-loss, it resets when you leave the singleplayer menu.
     if(score > highscore){
       printf("You beat the highscore of %d points!\n",highscore);
       printf("You have the new highscore!");
@@ -35,6 +39,11 @@ int singlePlayer(void){
     if(strcmp(choice,"no") == 0 || strcmp(choice,"n") == 0){
       break;
     }
+    //We free the memory of the board before creating a new one
+    for(int i = 0; i < height;i++){
+      free(Board[i]);
+    }
+    free(Board);
   }
 
   return 0;
