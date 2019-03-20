@@ -1,5 +1,4 @@
-fix bug where some words are either not stored as found or overwritten.
 Create the makefile
 Create tutorial to run
-Create the video tutorials
+Create the video tutorial
 Optional: ncurses
