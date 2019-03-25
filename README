@@ -1,0 +1,16 @@
+Welcome to Boggle!
+This code was all written by Dylan Marcum-Pollard for his CS 201 project at The University of Alabama.
+
+In order to play Boggle, you must do the following:
+1. Get a textfile in which all non-proper nouns are lower case. 
+(If you do not have one such textfile, there are instructions below to get one).
+2. Ensure that the text file is named wordList.txt (Capitalization is important!)
+3. Place wordList.txt in the same folder as the source code.
+4. Enter the source code folder and type "make boggle" (Again, capitalization matters!)
+5. Enjoy!
+
+If you do not have a valid text file, here are two ways to get them:
+
+If on a unix system:
+
+If not on a unix system:
