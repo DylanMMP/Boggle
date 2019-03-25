@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
+#include <ctype.h>
 #include "WordList.h"
 #include "WordFind.h"
 #include "GenBoard.h"

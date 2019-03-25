@@ -154,7 +154,7 @@ int versusComputerAcc(void){
           pointValue = 0;
           break;
         }
-        printf("%s found! %s is worth %d points!\n",input,input,pointValue);
+        printf("%s found! %s is worth %d point(s)!\n",input,input,pointValue);
         break;
         //This if statement ends the loop if the word isn't found in the found words list
       } else if(strcmp(input,check->storedWord) != 0 && check->next == NULL) {

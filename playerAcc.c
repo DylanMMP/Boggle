@@ -3,7 +3,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
+#include <time.h>
 #include "WordFind.h"
+
+#define THREE_MINUTES (180)
 
 //We use a linked list of strings to store all words that have already been found
 struct scoredWord{
@@ -102,9 +105,26 @@ int playerAcc(void){
   char input[45];
   int pointTotal = 0;
   int pointValue = 0;
+  time_t start;
+  time_t curTime;
+  int diff = 0;
+  int minutes = 0;
+  int seconds = 0;
+  int remaining = 0;
+  time(&start);
   printf("Input words (or 'q' to quit)\n");
 
   while(1){
+    curTime = time(&curTime);
+    diff = difftime(curTime,start);
+    remaining = THREE_MINUTES - diff;
+    minutes = remaining / 60;
+    seconds = remaining % 60;
+    if(diff >= THREE_MINUTES){
+      printf("Time is up!\n");
+      break;
+    }
+    printf("\n%d minutes %d seconds remaining\n",minutes,seconds);
     check = foundRoot;
     printf("Guess: ");
     scanf("%s",input);
@@ -117,12 +137,13 @@ int playerAcc(void){
       //This if statement triggers if the word is found.
       if(strcmp(input,check->storedWord) == 0){
         pointValue = scoreWord(input);
-        pointTotal += pointValue;
         //This if statement verifies that the word has not been previously entered.
         if(pointValue == -1){
           pointValue = 0;
           break;
         }
+        //We update the point total;
+        pointTotal += pointValue;
         printf("%s found! %s is worth %d points!\n",input,input,pointValue);
         break;
       //This if statement ends the loop if the word isn't found in the found words list
