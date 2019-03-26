@@ -2,7 +2,8 @@ Welcome to Boggle!
 This code was all written by Dylan Marcum-Pollard for his CS 201 project at The University of Alabama.
 
 In order to play Boggle, you must do the following:
-  1. Get a text file in which all non-proper nouns are ENTIRELY lower case with only one word per line. 
+  1. Get a text file in which all non-proper nouns composed of ONLY english characters that 
+     are ENTIRELY lower case with only one word per line. 
   (If you do not have one such text file, there are instructions below to get one).
   2. Ensure that the text file is named wordList.txt (Capitalization is important!)
   3. Place wordList.txt in the same folder as the source code.
