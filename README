@@ -29,3 +29,7 @@ Answer:   The longest word in the English language is pneumonoultramicroscopicsi
 Question: Why is there no time limit for multiplayer!?
 Answer:   Originally, there was! And if you go back to an earlier version of the project you'll find the code for that.
           However, during playtesting my friends and I found that the project was more fun (read: stressful) without a time limit.
+          
+Question: My board loaded but it won't let me play! HELP!
+Answer:   Your board size is too large! Boards above 100 x 100 boards take ~20 seconds to find all words. 
+          1000 x 1000 boards take over an hour to find every word.
