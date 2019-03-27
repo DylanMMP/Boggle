@@ -115,7 +115,7 @@ int playerAcc(void){
   printf("Input words (or 'q' to quit)\n");
 
   while(1){
-    curTime = time(&curTime);
+    time(&curTime);
     diff = difftime(curTime,start);
     remaining = THREE_MINUTES - diff;
     minutes = remaining / 60;
@@ -127,7 +127,7 @@ int playerAcc(void){
     printf("\n%d minutes %d seconds remaining\n",minutes,seconds);
     check = foundRoot;
     printf("Guess: ");
-    scanf("%s",input);
+    scanf("%45s", input);
 
     if(strcmp(input,"q") == 0){
       break;

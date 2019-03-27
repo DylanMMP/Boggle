@@ -9,6 +9,7 @@
 
 #define PLAYER_ONE (0)
 #define PLAYER_TWO (1)
+#define THREE_MINUTES (180)
 
 //We use a linked list of strings to store all words that have already been found
 struct ScoredWordVC{
@@ -165,10 +166,10 @@ int versusComputerAcc(void){
       }
     }
     //The following if and else if statements simply increment points and change the player state.
-    if(turn == PLAYER_ONE && pointValue != -1){
+    if(turn == PLAYER_ONE){
       pointTotalP1 += pointValue;
       turn = PLAYER_TWO;
-    } else if(turn == PLAYER_TWO && pointValue != -1){
+    } else if(turn == PLAYER_TWO){
       pointTotalP2 += pointValue;
       turn = PLAYER_ONE;
     } else {

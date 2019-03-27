@@ -4,10 +4,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
+#include <time.h>
 #include "WordFind.h"
 
 #define PLAYER_ONE (0)
 #define PLAYER_TWO (1)
+#define THREE_MINUTES (180)
 
 //We use a linked list of strings to store all words that have already been found
 struct scoredWordMP{
@@ -108,8 +110,8 @@ int multiplayerAcc(void){
   int pointTotalP2 = 0;
   int pointValue = 0;
   printf("Input words (or 'q' to quit)\n");
-  while(1){
 
+  while(1){
     check = foundRoot;
 
     if(turn == PLAYER_ONE){
@@ -142,10 +144,10 @@ int multiplayerAcc(void){
       }
     }
     //The following if and else if statements simply increment points and change the player state.
-    if(turn == PLAYER_ONE && pointValue != -1){
+    if(turn == PLAYER_ONE){
       pointTotalP1 += pointValue;
       turn = PLAYER_TWO;
-    } else if(turn == PLAYER_TWO && pointValue != -1){
+    } else if(turn == PLAYER_TWO){
       pointTotalP2 += pointValue;
       turn = PLAYER_ONE;
     } else {

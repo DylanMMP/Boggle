@@ -9,6 +9,7 @@
 
 #define PLAYER_ONE (0)
 #define PLAYER_TWO (1)
+#define THREE_MINUTES (180)
 
 //We use a linked list of strings to store all words that have already been found
 struct ScoredWordCVC{
