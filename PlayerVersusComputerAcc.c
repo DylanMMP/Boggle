@@ -32,6 +32,15 @@ struct ScoredWordVC *ScoredWordVCNode(void) {
 //The root of the linked list
 struct ScoredWordVC *ScoredVCRoot;
 
+void clearScoredWordVC(){
+  struct ScoredWordVC *temp;
+  while(ScoredVCRoot != NULL){
+    temp = ScoredVCRoot;
+    ScoredVCRoot = ScoredVCRoot->next;
+    free(temp);
+  }
+}
+
 void newScoredWordVC(char *word){
   struct ScoredWordVC *newNode = ScoredWordVCNode();
   struct ScoredWordVC *check = ScoredVCRoot;
@@ -187,5 +196,7 @@ int versusComputerAcc(void){
   } else {  //It's a tie
     winner = 0;
   }
+  clearFoundWord();
+  clearScoredWordVC();
   return winner;
 }

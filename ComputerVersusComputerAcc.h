@@ -13,6 +13,8 @@ struct ScoredWordCVC *ScoredWordCVCNode(void);
 
 struct ScoredWordCVC *ScoredCVCRoot;
 
+void clearScoredWordCVC();
+
 void newScoredWordCVC(char *word);
 
 int scoreWordCVC(char *word);

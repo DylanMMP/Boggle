@@ -5,7 +5,6 @@
 #include <stdbool.h>
 #include <string.h>
 #include <ctype.h>
-#include "WordList.h"
 #include "WordFind.h"
 #include "GenBoard.h"
 #include "playerAcc.h"
@@ -14,7 +13,6 @@ int singlePlayer(void){
   int score = 0;
   int highscore = 0;
   char choice[3];
-  wordList();
   while(1){
     genBoard();
     wordFind();

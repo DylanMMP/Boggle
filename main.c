@@ -5,8 +5,10 @@
 #include <ctype.h>
 #include "SinglePlayer.c"
 #include "Multiplayer.c"
+#include "WordList.h"
 
 int main(void){
+  wordList();
   char choice[10]; //Stores user choices
   printf("Would you like to play single player or multiplayer?\n");
   while(1){
@@ -23,6 +25,6 @@ int main(void){
     printf("Enter 'q' to quit\n");
     printf("Enter game mode: (singleplayer or multiplayer)\n");
   }
-
-  return 0;
+  void freeTrie(root);
+  exit(0);
 }

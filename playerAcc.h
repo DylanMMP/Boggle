@@ -12,6 +12,8 @@ struct scoredWord *scoredRoot;
 
 void newScoredWord(char *word);
 
+void clearScoredWord();
+
 int scoreWord(char *word);
 
 int playerAcc(void);

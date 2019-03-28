@@ -57,8 +57,19 @@ void newFoundWord(char *word){
       return;
     //If the word is already in the list, we break out of it.
     } else if(strcmp(check->next->storedWord,newNode->storedWord) == 0){
+      free(newNode);
       return;
     }
+  }
+}
+
+void clearFoundWord(){
+  struct foundWord *head = foundRoot;
+  struct foundWord *temp = head;
+  while(head != NULL){
+     temp = head;
+     head = head->next;
+     free(temp);
   }
 }
 

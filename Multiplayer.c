@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <stdbool.h>
-#include "WordList.h"
 #include "WordFind.h"
 #include "GenBoard.h"
 #include "PlayerVersusPlayerAcc.h"
@@ -13,7 +12,6 @@ void multiplayer(void){
   int winner = 0;
   int winCount[] = {0,0,0};
   char choice[3];
-  wordList();               //Wordlist is used to create the trie of words
   while(1){
     //This loop ensures that the user enters a valid input
     while(strcmp(choice,"pvp") != 0 && strcmp(choice,"pvc") != 0 && strcmp(choice,"cvc") != 0){
@@ -47,6 +45,12 @@ void multiplayer(void){
     if(winCount[0] > 0){
       printf("Number of draws: %d",winCount[0]);
     }
+
+    for(int i = 0; i < height;i++){
+      free(Board[i]);
+    }
+    free(Board);
+
     printf("\n");
     printf("Would you like to play again?\n");
     scanf("%s",choice);

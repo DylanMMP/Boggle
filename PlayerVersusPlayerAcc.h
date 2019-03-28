@@ -15,6 +15,8 @@ struct scoredWordMP *scoredWordMPNode(void);
 
 struct scoredWordMP *scoredMPRoot;
 
+void clearScoredWordMP();
+
 void newscoredWordMP(char *word);
 
 int scoreWordMP(char *word);

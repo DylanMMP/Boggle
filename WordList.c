@@ -34,6 +34,16 @@ struct TrieNode *newTrieNode(void) {
   return node;
 }
 
+void freeTrie(struct TrieNode *check) {
+    int i;
+    for (i = 0; i < 27; i++) {
+        if (check->child[i] != NULL){
+            freeTrie(check->child[i]);
+        }
+    }
+    free(check);
+}
+
 //A simple function to check to see if a string has non-lowercase or non-alpha characters
 //Returns true if a word violates the rules.
 bool checkString(const char *word){

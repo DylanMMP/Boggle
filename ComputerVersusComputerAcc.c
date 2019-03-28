@@ -32,6 +32,15 @@ struct ScoredWordCVC *ScoredWordCVCNode(void) {
 //The root of the linked list
 struct ScoredWordCVC *ScoredCVCRoot;
 
+void clearScoredWordCVC(){
+  struct ScoredWordCVC *temp;
+  while(ScoredCVCRoot != NULL){
+    temp = ScoredCVCRoot;
+    ScoredCVCRoot = ScoredCVCRoot->next;
+    free(temp);
+  }
+}
+
 //Function for adding new scored words to the ScoredWordCVC linked list
 void newScoredWordCVC(char *word){
   struct ScoredWordCVC *newNode = ScoredWordCVCNode();
@@ -199,5 +208,7 @@ int ComputerVersusComputerAcc(void){
   } else {  //It's a tie
     winner = 0;
   }
+  clearFoundWord();
+  clearScoredWordCVC();
   return winner;
 }

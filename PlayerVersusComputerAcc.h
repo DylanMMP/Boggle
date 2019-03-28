@@ -13,6 +13,8 @@ struct ScoredWordVC *ScoredWordVCNode(void);
 
 struct ScoredWordVC *ScoredVCRoot;
 
+void clearScoredWordVC();
+
 void newScoredWordVC(char *word);
 
 int scoreWordVC(char *word);

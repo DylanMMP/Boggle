@@ -32,6 +32,15 @@ struct scoredWordMP *scoredWordMPNode(void) {
 //The root of the linked list
 struct scoredWordMP *scoredMPRoot;
 
+void clearScoredWordMP(){
+  struct scoredWordMP *temp;
+  while(scoredMPRoot != NULL){
+    temp = scoredMPRoot;
+    scoredMPRoot = scoredMPRoot->next;
+    free(temp);
+  }
+}
+
 //Function for adding new scored words to the ScoredWordCVC linked list
 void newscoredWordMP(char *word){
   struct scoredWordMP *newNode = scoredWordMPNode();
@@ -167,5 +176,7 @@ int multiplayerAcc(void){
   } else {  //It's a tie
     winner = 0;
   }
+  clearFoundWord();
+  clearScoredWordMP();
   return winner;
 }

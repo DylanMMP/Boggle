@@ -16,6 +16,8 @@ struct foundWord *newFoundWordNode(void);
 
 void newFoundWord(char *word);
 
+void clearFoundWord();
+
 void scanBoard(int i,int j,int count, char *word);
 
 void emptyWord(char *word);

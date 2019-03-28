@@ -58,8 +58,18 @@ void newScoredWord(char *word){
       return;
     } else if(strcmp(check->next->word,newNode->word) == 0){
       //If the word is the same as a word currently stored, DO NOT store it twice.
+      free(newNode);
       return;
     }
+  }
+}
+
+void clearScoredWord(){
+  struct scoredWord *temp;
+  while(scoredRoot != NULL){
+    temp = scoredRoot;
+    scoredRoot = scoredRoot->next;
+    free(temp);
   }
 }
 
@@ -155,5 +165,7 @@ int playerAcc(void){
       }
     }
   }
+  clearScoredWord();
+  clearFoundWord();
   return pointTotal;
 }
