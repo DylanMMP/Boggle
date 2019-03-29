@@ -10,7 +10,7 @@
 int main(void){
   wordList();
   char choice[10]; //Stores user choices
-  printf("Would you like to play single player or multiplayer?\n");
+  printf("Would you like to play singleplayer or multiplayer?\n");
   while(1){
     scanf("%s",choice);
     if(strcmp(choice,"single") == 0 || strcmp(choice,"singleplayer") == 0){
