@@ -11,6 +11,8 @@ extern struct boardNode **Board;
 extern int height;
 extern int width;
 
+//int getNum(void);
+
 char getRandomChar(void);
 
 struct boardNode **genBoard(void);

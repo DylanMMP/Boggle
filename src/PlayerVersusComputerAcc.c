@@ -131,7 +131,9 @@ int versusComputerAcc(void){
     compCheck = foundRoot;
     if(turn == PLAYER_ONE){
       printf("Player Guess: ");
-      scanf("%s",input);
+      scanf("%45s", input);
+      int c;
+      while ((c = fgetc(stdin)) != '\n' && c != EOF);
       if(strcmp(input,"q") == 0){
         break;
       }

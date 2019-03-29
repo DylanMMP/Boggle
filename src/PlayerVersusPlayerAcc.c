@@ -128,7 +128,10 @@ int multiplayerAcc(void){
     } else {
       printf("Player 2 Guess: ");
     }
-    scanf("%s",input);
+
+    scanf("%45s", input);
+    int c;
+    while ((c = fgetc(stdin)) != '\n' && c != EOF);
 
     if(strcmp(input,"q") == 0){
       break;
