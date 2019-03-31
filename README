@@ -38,11 +38,11 @@ If on a unix system:
   Also ensure that your words file meets the requirements in paragraph two of this readme (that is: all words that are not proper
   nouns are entirely lower-case) and that each word is on its own line in the text file.
   
-  If the above is not met, please type:
-    wget http://
+  If you can't do the above, get the file from: https://drive.google.com/file/d/1AdqLE0U35zaPPmUFSp2qCtZWGCw0mS23/view?usp=sharing
 
 If not on a unix system:
   I have uploaded my text file on dropbox at the following link: 
+    https://drive.google.com/file/d/1AdqLE0U35zaPPmUFSp2qCtZWGCw0mS23/view?usp=sharing
   Download it and then go to step 2 of the setup instructions.
 
 Frequently Asked Questions:
