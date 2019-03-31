@@ -188,9 +188,11 @@ int ComputerVersusComputerAcc(void){
     //The following if and else if statements simply increment points and change the player state.
     if(turn == PLAYER_ONE){
       pointTotalP1 += pointValue;
+      pointValue = 0;
       turn = PLAYER_TWO;
     } else if(turn == PLAYER_TWO){
       pointTotalP2 += pointValue;
+      pointValue = 0;
       turn = PLAYER_ONE;
     } else {
       turn = !turn;
