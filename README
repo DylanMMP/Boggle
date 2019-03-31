@@ -12,7 +12,8 @@ lower-case, in English (or at least do not contain accents such as É or ñ), an
 punctuation, etc). So your text file MUST contain entirely lowercase words for the program to function as intended. This is because
 according to Boggle rules, proper nouns are not scored and only letters exist on the Boggle dice. This program only uses capitalization
 to differentiate between proper nouns and other words because it is (virtually) impossible to have a list of every proper noun 
-(since there are so many places and names) to check every word in the word list against.
+(since there are so many places and names) to check every word in the word list against. Also, all words need to be on their own line
+of the text file as this is how the program differentiates between different words.
 
 For questions regarding features, design decisions, and more see the FAQ below.
 
@@ -20,14 +21,25 @@ In order to play Boggle, you must do the following:
 1. Get a textfile in which all non-proper nouns are lower case. 
 (If you do not have one such textfile, there are instructions below to get one).
 2. Ensure that the text file is named wordList.txt (Capitalization is important!)
-3. Place wordList.txt in the same folder as the source code.
-4. Enter the source code folder and type "make boggle" (Again, capitalization matters!)
-5. Enjoy!
+3. Place wordList.txt in the src folder.
+4. Enter the src folder if you haven't already.
+5. Type "make boggle" (Again, capitalization matters!) in the command line.
+6. Enjoy!
 
 If you do not have a valid text file, here are two ways to get them:
 
 If on a unix system:
+  You can find a dictionary of words in the following folder:
+    /urs/share/dict/words or /usr/dict/words
+  You can then move a COPY (this file is used for spellchecking, so for your grammar's sake, don't move the folder itself!)of this file
+  to the src folder for this program. By typing the following command:
+    cp [Insert the directory to your /usr/dict/words/ file here] [Insert the directory to your Boggle src folder here]/wordList.txt
+  Please ensure that your words file is named wordList.txt upon doing the above. If not, rename it.
+  Also ensure that your words file meets the requirements in paragraph two of this readme (that is: all words that are not proper
+  nouns are entirely lower-case) and that each word is on its own line in the text file.
   
+  If the above is not met, please type:
+    wget http://
 
 If not on a unix system:
   I have uploaded my text file on dropbox at the following link: 
