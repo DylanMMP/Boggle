@@ -10,12 +10,14 @@
 int main(void){
   wordList();
   char choice[10]; //Stores user choices
+select:
   printf("Would you like to play singleplayer or multiplayer?\n");
   while(1){
-    while(strcmp(choice,"single") == 0 || strcmp(choice,"singleplayer") == 0
-          || strcmp(choice,"multi") == 0 || strcmp(choice,"multiplayer") == 0
-          || strcmp(choice,"q") == 0){
     scanf("%s",choice);
+    if(strcmp(choice,"single") != 0 && strcmp(choice,"singleplayer") != 0
+          && strcmp(choice,"multi") != 0 && strcmp(choice,"multiplayer") != 0
+          && strcmp(choice,"q") != 0){
+          goto select;
     }
     if(strcmp(choice,"single") == 0 || strcmp(choice,"singleplayer") == 0){
       singlePlayer(); //Takes player to single player menu
