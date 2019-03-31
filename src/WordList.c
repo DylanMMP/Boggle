@@ -1,3 +1,5 @@
+//Dylan Marcum-Pollard | dmmarcumpollard@crimson.ua.edu
+//This program creates a trie for the program.
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

@@ -1,3 +1,5 @@
+//Dylan Marcum-Pollard | dmmarcumpollard@crimson.ua.edu
+//This project handles the multiplayer menu for Boggle
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>

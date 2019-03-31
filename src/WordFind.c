@@ -1,3 +1,4 @@
+//Dylan Marcum-Pollard | dmmarcumpollard@crimson.ua.edu
 //This function scans the board to find every word in it.
 #include <stdio.h>
 #include <stdlib.h>

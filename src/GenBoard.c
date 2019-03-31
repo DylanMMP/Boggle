@@ -1,3 +1,4 @@
+//Dylan Marcum-Pollard | dmmarcumpollard@crimson.ua.edu
 //This class manages the board generation for Boggle.
 /*In this class we create and store the board. We do this dynamically so that
  *the wordFind class can access it. The board is a 2d array of structs. This is

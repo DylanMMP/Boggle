@@ -1,3 +1,4 @@
+//Dylan Marcum-Pollard | dmmarcumpollard@crimson.ua.edu
 //The intent behind this class is to provide the singleplayer menu screen
 
 #include <stdio.h>

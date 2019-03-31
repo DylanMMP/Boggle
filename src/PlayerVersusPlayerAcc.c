@@ -1,3 +1,4 @@
+//Dylan Marcum-Pollard | dmmarcumpollard@crimson.ua.edu
 //This class manages the player vs player scenario for Boggle.
 
 #include <stdio.h>

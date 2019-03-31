@@ -1,3 +1,4 @@
+//Dylan Marcum-Pollard | dmmarcumpollard@crimson.ua.edu
 //This class manages the singleplayer scenario for Boggle.
 #include <stdio.h>
 #include <stdlib.h>
